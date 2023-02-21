@@ -6,7 +6,6 @@ import {
 } from "@solana/wallet-adapter-react";
 import {
   LedgerWalletAdapter,
-  PhantomWalletAdapter,
   SlopeWalletAdapter,
   SolflareWalletAdapter,
   SolletExtensionWalletAdapter,
@@ -24,7 +23,7 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const wallets: any = useMemo(
     () => [
-      new PhantomWalletAdapter(),
+      // new PhantomWalletAdapter(),
       new SlopeWalletAdapter(),
       new SolflareWalletAdapter(),
       new LedgerWalletAdapter(),
@@ -54,7 +53,7 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={wallets} onError={onError} autoConnect={true}>
+      <WalletProvider wallets={wallets} onError={onError} autoConnect>
         <WalletModalProvider>{children}</WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>

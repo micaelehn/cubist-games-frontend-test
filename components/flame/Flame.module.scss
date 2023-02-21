@@ -1,5 +1,8 @@
 .container {
   position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
   // padding: 50px 0 50px 0;
   > svg {
     position: absolute;
@@ -12,7 +15,23 @@
   //   rgba(255, 193, 7, 0.15) 0%,
   //   rgba(255, 193, 7, 0) 90%
   // );
+  &:global {
+    &.activeBg {
+      margin-bottom: 20px;
+      &::before {
+        content: "";
+        width: 140px;
+        height: 70px;
+        bottom: calc(50% - 35px);
+        left: calc(50% - 70px);
+        position: absolute;
+        border-radius: 50%;
+        background-color: #ff9800;
+      }
+    }
+  }
 }
+
 @keyframes firelight {
   0% {
     opacity: 1;
@@ -25,25 +44,15 @@
   }
 }
 .flameWrapper {
+  display: flex;
   position: absolute;
-  top: -155px;
+  bottom: calc(50% - 20px);
   z-index: 1;
-  left: 70px;
-  margin: 0 0 -30px -100px;
-  width: 150px;
-  height: 200px;
+  left: calc(50% - 100px);
+  width: 200px;
+  height: 190px;
+  border-radius: 70%;
   overflow: hidden;
-  border-radius: 100%;
-  &::before {
-    content: "";
-    width: 100px;
-    height: 60px;
-    bottom: 2px;
-    left: 25px;
-    position: absolute;
-    border-radius: 50%;
-    background-color: #ff9800;
-  }
   .fire {
     filter: url(#goo);
     position: absolute;
@@ -81,6 +90,12 @@
       }
     }
   }
+}
+.content {
+  display: flex;
+}
+.children {
+  display: flex;
 }
 @keyframes firecircle {
   0% {
